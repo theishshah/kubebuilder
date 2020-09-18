@@ -1,17 +1,20 @@
-name: "PR Title Checker"
+name: Pull Request Emoji Check
+
 on:
   # Trigger the workflow on pull request,
   # but only for the master branch
   pull_request:
     branches:
       - master
+
 jobs:
-  publish:
+  title:
+    name: ticket check
     runs-on: ubuntu-latest
+
     steps:
-      - uses = "./../../scripts/ci"
+      - name: Check for Emoji
+        uses: neofinancial/ticket-check-action@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-        #  pattern: '/^:bug:|:seedling:|:ghost:|:book:|:sparkles:|:warning:/'
-
+          token: ${{ secrets.GITHUB_TOKEN }}
+          titleRegex: '/^:bug:|:seedling:|:ghost:|:book:|:sparkles:|:warning:/'
