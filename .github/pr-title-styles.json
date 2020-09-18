@@ -1,0 +1,10 @@
+{
+    "LABEL": {
+      "name": "Title Missing Emoji",
+      "color": "EEEEEE"
+    },
+    "CHECKS": {
+      "prefixes": [":bug:", ":seedling:", ":ghost:", ":book:", ":sparkles:", ":warning:"],
+      "regexp": "docs\\(v[0-9]\\): "
+    }
+  }
