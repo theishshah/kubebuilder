@@ -5,10 +5,19 @@ on:
   pull_request:
     branches:
       - master
+#jobs:
+  #publish:
+   # runs-on: ubuntu-latest
+    #steps:
+     # - uses: thehanimo/pr-title-checker@v1.0.0
+      #  with:
+       #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   publish:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     steps:
-      - uses: thehanimo/pr-title-checker@v1.0.0
+      - uses: actions/checkout@v1
+      - uses: dylanvann/check-pull-request-title@v1
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Match pull request titles in the form UI-1234 - Message.
+          pattern: '/^:bug:|:seedling:|:ghost:|:book:|:sparkles:|:warning:/'
